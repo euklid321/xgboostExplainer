@@ -51,7 +51,7 @@ explainPredictions = function(xgb.model, explainer ,data){
   #Accepts data table of the breakdown for each leaf of each tree and the node matrix
   #Returns the breakdown for each prediction as a data table
 
-  nodes = predict(xgb.model,data,predleaf =TRUE)
+  nodes = predict(xgb.model,data,predleaf =TRUE, ntreelimit = max(explainer$tree) + 1)
 
   colnames = names(explainer)[1:(ncol(explainer)-2)]
 

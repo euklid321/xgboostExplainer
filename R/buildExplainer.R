@@ -58,7 +58,7 @@ buildExplainer = function(xgb.model, trainingData, type = "binary", base_score =
 
   col_names = attr(trainingData, ".Dimnames")[[2]]
   cat('\nCreating the trees of the xgboost model...')
-  trees = xgb.model.dt.tree(col_names, model = xgb.model, n_first_tree = n_first_tree)
+  trees = xgb.model.dt.tree(col_names, model = xgb.model, trees = c(0:n_first_tree))
   cat('\nGetting the leaf nodes for the training set observations...')
   nodes.train = predict(xgb.model,trainingData,predleaf =TRUE)
 
